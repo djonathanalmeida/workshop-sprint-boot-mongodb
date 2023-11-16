@@ -1,9 +1,12 @@
 package com.djonathanalmeida.workshopmongo.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.djonathanalmeida.workshopmongo.domain.Post;
+import com.djonathanalmeida.workshopmongo.dto.CommentDTO;
 import com.djonathanalmeida.workshopmongo.repository.PostRepository;
 import com.djonathanalmeida.workshopmongo.services.exception.ObjectNotFoundException;
 
@@ -22,5 +25,8 @@ public class PostService {
 		return user;
 	}
 	
+	public List<Post> findByTitle(String text){
+		return repo.findByTitleContainingIgnoreCase(text);
+	}
 	
 }
